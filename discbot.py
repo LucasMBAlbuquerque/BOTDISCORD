@@ -55,9 +55,10 @@ async def p(ctx, coin, base):
             'symbol':'{}'.format(coin),
             'convert':'{}'.format(base)
         }
+        TOKENCMK = config("X-CMC_PRO_API_KEY")
         headers ={
             'Accepts':'application/json',
-            'X-CMC_PRO_API_KEY':'a0928e14-2b21-4052-a29a-a3071eb9dde6'
+            'X-CMC_PRO_API_KEY':TOKENCMK
         }
         session = Session()
         session.headers.update(headers)
