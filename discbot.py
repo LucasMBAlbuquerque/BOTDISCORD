@@ -1,10 +1,9 @@
-import discord
 from discord.ext import commands
 import json
-import requests
+from requests import Request, Session
 import nest_asyncio
 from decouple import config
-from requests import Request, Session
+
 nest_asyncio.apply()
 
 bot = commands.Bot('!')
@@ -32,29 +31,6 @@ async def on_message(message):
         f' Lista de comandos \n !p MOEDA MOEDA \n Exemplo: !p BTC USD \n ou \n !p XNO BRL')
         
     await bot.process_commands(message)
-
-@bot.command()
-async def preco(ctx, coin, base):
-    try:
-        response = requests.get(
-            f'https://api.binance.com/api/v3/ticker/price?symbol={coin.upper()}{base.upper()}')
-        data = response.json()
-        price = data.get('price')
-        price = eval(price)
-        if price:
-            
-            await ctx.send(f'O valor do par {coin}/{base} é {price}$')
-            
-        else:
-            
-            await ctx.send(f'O par {coin}/{base} é inválido')
-            
-    except Exception as error:
-        
-        await ctx.send('Ocorreu um erro')
-        
-        print(error)
-
 
 @bot.command(name='oi')
 async def send_hello(ctx):
