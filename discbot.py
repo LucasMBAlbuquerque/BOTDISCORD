@@ -51,10 +51,17 @@ async def riso(ctx):
 async def p(ctx, coin, base):
     try:
         url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
-        parameters = {
-            'symbol':'{}'.format(coin),
-            'convert':'{}'.format(base)
-        }
+        if coin == coin.upper():
+            parameters = {
+                'symbol':'{}'.format(coin),
+                'convert':'{}'.format(base)
+            }
+        else:
+            parameters = {
+                'slug':'{}'.format(coin),
+                'convert':'{}'.format(base)
+            }
+        
         TOKENCMK = config("X-CMC_PRO_API_KEY")
         headers ={
             'Accepts':'application/json',
@@ -70,33 +77,46 @@ async def p(ctx, coin, base):
         hora = round(f['percent_change_1h'],3)
         dia = round(f['percent_change_24h'],3)
         semana = round(f['percent_change_7d'],3)
+        moeda = ''
         if hora > 35:
             emojih = ':rofl:'
-        elif hora <= 0 and hora >= -10:
-            emojih = ':cry:'
-        elif hora >0 and hora <= 35:
+        elif hora <= 1 and hora >= -1:
+            emojih = ':neutral_face:'
+        elif hora >1 and hora <= 35:
             emojih = ':laughing:'
-        elif hora <= -10:
+        elif hora < -1 and hora >= -10:
+            emojih = ':cry:'
+        elif hora < -10:
             emojih = ':sob:'
         if dia > 35:
             emojid = ':rofl:'
-        elif dia <= 0 and dia >= -10:
-            emojid = ':cry:'
-        elif dia >0 and dia <= 35:
+        elif dia <= 1 and dia >= -1:
+            emojid = ':neutral_face:'
+        elif dia >1 and dia <= 35:
             emojid = ':laughing:'
-        elif dia <= -10:
+        elif dia <= -1 and dia>= -10:
+            emojid = ':cry:'
+        elif dia < -10:
             emojid = ':sob:'
         if semana > 35:
             emojis = ':rofl:'
-        elif semana <= 0 and semana >= -10:
-            emojis = ':cry:'
-        elif semana >0 and semana <= 35:
+        elif semana <= 1 and semana >= -1:
+            emojis = ':neutral_face:'
+        elif semana >1 and semana <= 35:
             emojis = ':laughing:'
-        elif semana <= -10:
+        elif semana <= -1 and semana >= -10:
+            emojis = ':cry:'
+        elif semana < -10:
             emojis = ':sob:'
-        if price and hora and dia and semana:
+        if parameters['convert'] == 'BRL':
+            moeda = 'R$'
+        elif parameters['convert'] == 'USD':
+            moeda = '$'
+        if parameters['convert'] != 'BRL' and parameters['convert'] != 'USD':
+            moeda = base
+        if price and hora and dia and semana and moeda:
             
-            await ctx.send(f' O valor do par {coin}/{base} é {price}$ \n mudança na última hora = {hora}% {emojih} \n mudança nas últimas 24h = {dia}% {emojid} \n mudança na última semana = {semana}% {emojis}')
+            await ctx.send(f' === O valor do par {coin}/{moeda} é {price}$ === \n mudança na última hora = {hora}% {emojih} \n mudança nas últimas 24h = {dia}% {emojid} \n mudança na última semana = {semana}% {emojis}')
             
         else:
             
