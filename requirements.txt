@@ -2,3 +2,4 @@ discord.py
 requests
 python-decouple
 nest-asyncio
+json
