@@ -116,7 +116,7 @@ async def p(ctx, coin, base):
             moeda = base
         if price and hora and dia and semana and moeda:
             
-            await ctx.send(f' === O valor do par {coin}/{moeda} é {price}$ === \n mudança na última hora = {hora}% {emojih} \n mudança nas últimas 24h = {dia}% {emojid} \n mudança na última semana = {semana}% {emojis}')
+            await ctx.send(f' === O valor do par {coin}/{base} é {price}{moeda} === \n mudança na última hora = {hora}% {emojih} \n mudança nas últimas 24h = {dia}% {emojid} \n mudança na última semana = {semana}% {emojis}')
             
         else:
             
