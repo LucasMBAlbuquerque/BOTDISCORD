@@ -3,5 +3,4 @@ requests
 python-decouple
 nest-asyncio
 gunicorn
-freeze
 flask
