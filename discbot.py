@@ -54,12 +54,12 @@ async def p(ctx, coin, base):
         if coin == coin.upper():
             parameters = {
                 'symbol':'{}'.format(coin),
-                'convert':'{}'.format(base)
+                'convert':'{}'.format(base.upper())
             }
         else:
             parameters = {
                 'slug':'{}'.format(coin),
-                'convert':'{}'.format(base)
+                'convert':'{}'.format(base.upper())
             }
         
         TOKENCMK = config("X-CMC_PRO_API_KEY")
@@ -86,8 +86,10 @@ async def p(ctx, coin, base):
             emojih = ':laughing:'
         elif hora < -1 and hora >= -10:
             emojih = ':cry:'
-        elif hora < -10:
+        elif hora < -10 and hora >= -30:
             emojih = ':sob:'
+        elif hora < -30:
+            emojih = ':skull'
         if dia > 35:
             emojid = ':rofl:'
         elif dia <= 1 and dia >= -1:
@@ -96,8 +98,10 @@ async def p(ctx, coin, base):
             emojid = ':laughing:'
         elif dia <= -1 and dia>= -10:
             emojid = ':cry:'
-        elif dia < -10:
+        elif dia < -10 and dia >= -30:
             emojid = ':sob:'
+        elif dia < -30:
+            emojid = ':skull:'
         if semana > 35:
             emojis = ':rofl:'
         elif semana <= 1 and semana >= -1:
@@ -106,8 +110,10 @@ async def p(ctx, coin, base):
             emojis = ':laughing:'
         elif semana <= -1 and semana >= -10:
             emojis = ':cry:'
-        elif semana < -10:
+        elif semana < -10 and semana >= -30:
             emojis = ':sob:'
+        elif semana < -30:
+            emojis = ':skull:'
         if parameters['convert'] == 'BRL':
             moeda = 'R$'
         elif parameters['convert'] == 'USD':
