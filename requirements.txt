@@ -2,5 +2,4 @@ discord.py
 requests
 python-decouple
 nest-asyncio
-gunicorn
-flask
+git+https://github.com/Rapptz/discord.py
