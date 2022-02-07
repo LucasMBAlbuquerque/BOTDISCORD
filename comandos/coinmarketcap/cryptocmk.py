@@ -117,7 +117,7 @@ class Crypto(commands.Cog):
                 embed_cmk.add_field(name = '```MUDANÇA NA ÚTLIMA HORA```', value = f'**{hora}%** {emojih}', inline=False)
                 embed_cmk.add_field(name = '```MUDANÇA NAS ÚLTIMAS 24h```', value = f'**{dia}%** {emojid}', inline=False)
                 embed_cmk.add_field(name = '```MUDANÇA NA ÚLTIMA SEMANA```', value = f'**{semana}%** {emojis}', inline=False)
-                embed_cmk.add_field(name = '```RANKING```', value = f'{rank}º LUGAR EM MARKETCAP', inline= False)
+                embed_cmk.add_field(name = '```RANKING```', value = f'**{rank}º LUGAR EM MARKETCAP**', inline= False)
                 embed_cmk.set_thumbnail(url=f'https://cryptologos.cc/logos/{nome}-{simbolo}-logo.png?v=018')
                 await ctx.send(embed=embed_cmk)
             else:
