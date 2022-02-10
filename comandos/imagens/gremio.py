@@ -13,7 +13,7 @@ class gremio(commands.Cog):
 
     @commands.command()
     async def gremio(self, ctx):
-        await ctx.send( file = discord.File(r'fotos\gremio'f'{random.randint(1,13)}.jpg'))
+        await ctx.send( file = discord.File('fotos\gremio'f'{random.randint(1,13)}.jpg'))
 
 def setup(bot):
     bot.add_cog(gremio(bot))
