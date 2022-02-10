@@ -16,7 +16,7 @@ class procurado(commands.Cog):
         if member == None:
             member = ctx.author
         
-        procurado = Image.open("procurado.jpg")
+        procurado = Image.open(r"fotos\procurado.jpg")
 
         asset = member.avatar_url_as(size = 128)
         data = BytesIO(await asset.read())
