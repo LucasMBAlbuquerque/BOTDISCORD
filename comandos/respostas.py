@@ -14,18 +14,20 @@ class Resposta(commands.Cog):
         if message.content == "opa":
             msg = "OPA EAE VEI BLZ. G2AAAAA"
             await message.channel.send(msg)
-        if message.content == "anime":
-            msg = requests.get('https://animechan.vercel.app/api/random').json()
-            frase = msg['quote']
-            frase = f'"{frase[0:-1]}"'
-            anime = ' Anime: ' + msg['anime']
-            personagem = " - " + msg['character']
-            await message.channel.send(frase + personagem + '\n' + anime)
+#        if message.content == "anime":
+#            msg = requests.get('https://animechan.vercel.app/api/random').json()
+#            frase = msg['quote']
+#            frase = f'"{frase[0:-1]}"'
+#            anime = ' Anime: ' + msg['anime']
+#            personagem = " - " + msg['character']
+#            await message.channel.send(frase + personagem + '\n' + anime)
+#            await message.channel.send(f"\ghipy {msg['character']}")
             
     
     @commands.Cog.listener()
     async def on_ready(self):
         print(f'estou pronto! Estou conectado como {self.bot.user}')
+
 
 def setup(bot):
     bot.add_cog(Resposta(bot))
