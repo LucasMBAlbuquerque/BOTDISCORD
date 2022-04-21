@@ -26,7 +26,7 @@ class Dates(commands.Cog):
 
         now = now.strftime("%H:%M:%S")
 
-        api = config("api_giphy")
+        api_giphy = config("api_giphy")
         api_instance = giphy_client.DefaultApi()
         msg = requests.get('https://animechan.vercel.app/api/random').json()
         frase = msg['quote'][0:-1]
@@ -34,7 +34,7 @@ class Dates(commands.Cog):
         personagem1 = f"{msg['anime']} " + msg['character']
         personagem = " - " + msg['character']
         try:
-            api_responce = api_instance.gifs_search_get(api, personagem1, limit=1, rating='r')
+            api_responce = api_instance.gifs_search_get(api_giphy, personagem1, limit=1, rating='r')
             lst =list(api_responce.data)
             giff = random.choice(lst)
 
