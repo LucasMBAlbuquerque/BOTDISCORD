@@ -3,3 +3,6 @@ requests
 python-decouple==3.5
 nest-asyncio
 pillow
+giphy-client==1.0.0
+translate==3.6.1
+pytz
