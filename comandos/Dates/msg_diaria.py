@@ -31,19 +31,15 @@ class Dates(commands.Cog):
             anime = ' Anime: ' + msg['anime']
             personagem1 = f"{msg['anime']} " + msg['character']
             personagem = " - " + msg['character']
+            translator= Translator(to_lang="pt")
+            translation = translator.translate(frase)
             try:
                 api_responce = api_instance.gifs_search_get(api_giphy, personagem1, limit=1, rating='r')
                 lst =list(api_responce.data)
                 giff = random.choice(lst)
-
-                #await ctx.send(giff.embed_url)
-                #await ctx.send('\n' + frase + personagem + '\n' + anime)
-
             except ApiException as e:
                 print('Erro ao usar API do ghipy')
-                translator= Translator(to_lang="pt")
-                translation = translator.translate(frase)
-
+        
             await channel.send("Bom dia :sunglasses:")
             await channel.send(giff.embed_url)
             await channel.send('\n' + f'"{translation}"' + personagem + '\n' + anime)
