@@ -15,7 +15,7 @@ class nofap(commands.Cog):
         if member == None:
             member = ctx.author
         
-        fapeiro = Image.open(r"fotos\nofap.jpg")
+        fapeiro = Image.open(r"fotos/nofap.jpg")
 
         asset = member.avatar_url_as(size = 128)
         data = BytesIO(await asset.read())
