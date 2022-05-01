@@ -36,7 +36,7 @@ class Baixar(commands.Cog):
                     with zipfile.ZipFile(fr'arquivos/{msg.filename}', 'r') as zip_ref:
                         zip_ref.extractall(fr'arquivos/unzipeds')
                 
-                    initial_count = 1
+                    initial_count = 0
                     dir = 'arquivos/unzipeds'
 
                     for path in os.listdir(dir):
@@ -48,7 +48,8 @@ class Baixar(commands.Cog):
                     lista = []
                     for root, dirs, files in os.walk(r"arquivos/unzipeds"):
                         for filename in files:
-                            lista.append(filename)
+                            if filename != 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.jpg':
+                                lista.append(filename)
 
                     nome_novo = 1
                     for arquive in lista:
@@ -79,7 +80,7 @@ class Baixar(commands.Cog):
                 elif msg.attachments[0].filename[-4:] == '.jpg':
                     for arquivos in msg.attachments:
                         await arquivos.save(fr'arquivos/unzipeds/{arquivos.filename}')
-                    initial_count = 1
+                    initial_count = 0
                     dir = r'arquivos/unzipeds'
 
                     for path in os.listdir(dir):
@@ -91,7 +92,8 @@ class Baixar(commands.Cog):
                     lista = []
                     for root, dirs, files in os.walk(r"arquivos/unzipeds"):
                         for filename in files:
-                            lista.append(filename)
+                            if filename != 'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz.jpg':
+                                lista.append(filename)
 
                     nome_novo = 1
                     for arquive in lista:
