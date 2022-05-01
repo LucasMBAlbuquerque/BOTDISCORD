@@ -78,9 +78,9 @@ class Baixar(commands.Cog):
                     # If you want only specific types of files you can do it with message.attachments[0].filename.endswith('extension_here')
                 elif msg.attachments[0].filename[-4:] == '.jpg':
                     for arquivos in msg.attachments:
-                        await arquivos.save(fr'arquivos\unzipeds\{arquivos.filename}')
+                        await arquivos.save(fr'arquivos/unzipeds/{arquivos.filename}')
                     initial_count = 1
-                    dir = r'arquivos\unzipeds'
+                    dir = r'arquivos/unzipeds'
 
                     for path in os.listdir(dir):
 
@@ -89,16 +89,16 @@ class Baixar(commands.Cog):
 
                     lst = list(range(initial_count))[1:initial_count]
                     lista = []
-                    for root, dirs, files in os.walk(r"arquivos\unzipeds"):
+                    for root, dirs, files in os.walk(r"arquivos/unzipeds"):
                         for filename in files:
                             lista.append(filename)
 
                     nome_novo = 1
                     for arquive in lista:
-                        os.rename(fr'arquivos\unzipeds\{arquive}',fr'arquivos\unzipeds\{str(nome_novo)}.jpg')
+                        os.rename(fr'arquivos/unzipeds/{arquive}',fr'arquivos/unzipeds/{str(nome_novo)}.jpg')
                         nome_novo +=1
 
-                    lst = [fr'arquivos\unzipeds\{str(x)}.jpg' for x in lst]
+                    lst = [fr'arquivos/unzipeds/{str(x)}.jpg' for x in lst]
 
                     images = [
                         Image.open(f) for f in lst
