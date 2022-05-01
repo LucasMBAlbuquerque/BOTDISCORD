@@ -12,7 +12,7 @@ class Baixar(commands.Cog):
     
     @commands.command()
     async def pdf(self, ctx):
-        '''transforma fotos em pdf'''
+        '''transforma fotos em pdf (Este comando só funciona no chat privado do bot)'''
         if isinstance(ctx.channel, discord.channel.DMChannel):
             await ctx.author.send(
                 "Caso for enviar as imagens dentro de um arquivo .zip, deixe-as em ordem alfabética \n"
