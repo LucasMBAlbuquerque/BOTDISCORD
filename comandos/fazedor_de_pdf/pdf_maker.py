@@ -80,7 +80,7 @@ class Baixar(commands.Cog):
                     for arquivos in msg.attachments:
                         await arquivos.save(fr'arquivos\unzipeds\{arquivos.filename}')
                     initial_count = 1
-                    dir = 'arquivos/unzipeds'
+                    dir = r'arquivos\unzipeds'
 
                     for path in os.listdir(dir):
 
