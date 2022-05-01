@@ -13,6 +13,7 @@ class procurado(commands.Cog):
 
     @commands.command()
     async def procurado(self, ctx, member: discord.Member = None):
+        '''você como o criminoso mais procurado do faroeste'''
         if member == None:
             member = ctx.author
         

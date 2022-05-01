@@ -13,6 +13,7 @@ class gremio(commands.Cog):
 
     @commands.command()
     async def gremio(self, ctx):
+        '''envia uma foto que talvez afete um grêmio'''
         await ctx.send( file = discord.File('fotos/gremio'f'{random.randint(1,13)}.jpg'))
 
 def setup(bot):

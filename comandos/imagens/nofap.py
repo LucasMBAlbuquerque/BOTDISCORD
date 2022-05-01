@@ -12,6 +12,7 @@ class nofap(commands.Cog):
 
     @commands.command()
     async def nofap(self, ctx, member: discord.Member = None):
+        '''teste para saber'''
         if member == None:
             member = ctx.author
         

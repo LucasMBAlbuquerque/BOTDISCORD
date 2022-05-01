@@ -12,6 +12,7 @@ class Crypto(commands.Cog):
 
     @commands.command()
     async def p(self, ctx, coin, base=None):
+        '''Comando para preço de cryptos'''
         try:
             url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 
