@@ -78,8 +78,7 @@ class Baixar(commands.Cog):
                     # If you want only specific types of files you can do it with message.attachments[0].filename.endswith('extension_here')
                 elif msg.attachments[0].filename[-4:] == '.jpg':
                     for arquivos in msg.attachments:
-                        t = f'arquivos/unzipeds/{arquivos.filename}'
-                        await arquivos.save(r'{}'.format(t))
+                        await arquivos.save(fr'arquivos\unzipeds\{arquivos.filename}')
                     initial_count = 1
                     dir = 'arquivos/unzipeds'
 
@@ -90,18 +89,16 @@ class Baixar(commands.Cog):
 
                     lst = list(range(initial_count))[1:initial_count]
                     lista = []
-                    for root, dirs, files in os.walk(r"arquivos/unzipeds"):
+                    for root, dirs, files in os.walk(r"arquivos\unzipeds"):
                         for filename in files:
                             lista.append(filename)
 
                     nome_novo = 1
                     for arquive in lista:
-                        t = f'arquivos/unzipeds/{arquive}'
-                        z = f'arquivos/unzipeds/{str(nome_novo)}.jpg'
-                        os.rename(r'{}'.format(t),r'{}'.format(z))
+                        os.rename(fr'arquivos\unzipeds\{arquive}',fr'arquivos\unzipeds\{str(nome_novo)}.jpg')
                         nome_novo +=1
 
-                    lst = [r'arquivos/unzipeds/{}.jpg'.format(str(x)) for x in lst]
+                    lst = [fr'arquivos\unzipeds\{str(x)}.jpg' for x in lst]
 
                     images = [
                         Image.open(f) for f in lst
@@ -116,8 +113,7 @@ class Baixar(commands.Cog):
                     await ctx.send( file = discord.File("seu_pdf.pdf"))
 
                     for fotos in lst:
-
-                        os.remove(r"{}".format(fotos))
+                        os.remove(fr"{fotos}")
                     os.remove("seu_pdf.pdf")                    
 
 
