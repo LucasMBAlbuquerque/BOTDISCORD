@@ -29,7 +29,7 @@ class Dates(commands.Cog):
             msg = requests.get('https://animechan.vercel.app/api/random').json()
             frase = msg['quote'][0:-1]
             anime = ' Anime: ' + msg['anime']
-            personagem1 = f"{msg['anime']} " + msg['character']
+            personagem1 = msg['character']
             personagem = " - " + msg['character']
             translator= Translator(to_lang="pt")
             translation = translator.translate(frase)
