@@ -1,9 +1,9 @@
 .env
 Animes
-imagens
-dict
-fotos
-
+Imagens
+Dict
+MensagemDiaria
+Fotos
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
