@@ -31,4 +31,4 @@ O CryptoBot Discord é um bot desenvolvido para o Discord que utiliza a API do C
 
 Este projeto é de código aberto e as contribuições são bem-vindas! Se você encontrar algum problema, tiver alguma sugestão ou desejar contribuir de alguma forma, sinta-se à vontade para abrir uma issue ou enviar um pull request neste repositório.
 
-Esperamos que o CryptoBot Discord seja útil para você e sua comunidade! Se tiver alguma dúvida ou precisar de ajuda, não hesite em entrar em contato.
+Espero que o CryptoBot Discord seja útil para você e sua comunidade! Se tiver alguma dúvida ou precisar de ajuda, não hesite em entrar em contato.

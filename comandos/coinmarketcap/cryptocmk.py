@@ -3,6 +3,7 @@ from requests import Session
 from decouple import config
 import discord.embeds
 import json
+import locale
 
 class Crypto(commands.Cog):
     """ Trabalha com preço de criptos """
@@ -14,16 +15,24 @@ class Crypto(commands.Cog):
     async def p(self, ctx, coin, base=None):
         '''Comando para preço de cryptos'''
         try:
+            local = locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
             url = 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest'
 
 
             if base == 'dolar' or base == 'usd' or base == None:
                 base = 'USD'
-            elif base == 'real':
+            elif base == 'real' or base == 'brl':
                 base = 'BRL'
             elif base == 'euro':
                 base = 'EUR'
+            else:
+                base = base.upper()
             coin = str(coin)
+
+            parameters = {
+                'symbol':f'{coin}',
+                'convert':f'{base}'
+            }
             if len(coin) == 3:
                 parameters = {
                     'symbol':f'{coin.upper()}',
@@ -112,14 +121,14 @@ class Crypto(commands.Cog):
                 embed_cmk = discord.Embed(
                     title = 'bot price',
                     url = 'https://github.com/LucasMBAlbuquerque',
-                    description = f' === **O VALOR DO PAR {coin.upper()}/{base.upper()} É {price}{moeda}** ===',
+                    description = f' === **O VALOR DO PAR {coin.upper()}/{base.upper()} É {locale.format_string("%.2f", price, grouping=True)} {moeda}** ===',
                     color=discord.Color.blue()
                 )
                 embed_cmk.add_field(name = '```MUDANÇA NA ÚTLIMA HORA```', value = f'**{hora}%** {emojih}', inline=False)
                 embed_cmk.add_field(name = '```MUDANÇA NAS ÚLTIMAS 24h```', value = f'**{dia}%** {emojid}', inline=False)
                 embed_cmk.add_field(name = '```MUDANÇA NA ÚLTIMA SEMANA```', value = f'**{semana}%** {emojis}', inline=False)
                 embed_cmk.add_field(name = '```RANKING```', value = f'**{rank}º LUGAR EM MARKETCAP**', inline= False)
-                embed_cmk.set_thumbnail(url=f'https://cryptologos.cc/logos/{nome}-{simbolo}-logo.png?v=018')
+                embed_cmk.set_thumbnail(url=f'https://cryptologos.cc/logos/{nome}-{simbolo}-logo.png?')
                 await ctx.send(embed=embed_cmk)
             else:
                 await ctx.send(f'O par **{coin}/{base}** é inválido')        
